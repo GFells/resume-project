@@ -10,7 +10,7 @@ var bio = {
      },
   welcomeMessage: "I'm working on it bruh",
   skills: ["This", "Will need", "To be", "Updated when I have some"],
-  biopic: "images/me.png",
+  biopic: "images/profpic.png",
   display: function(){
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -21,6 +21,8 @@ var bio = {
       HTMLtwitter.replace("%data%", bio.contacts.twitter),
       HTMLlocation.replace("%data%", bio.contacts.location)
     ]
+    $("#header").prepend(formattedRole);
+    $("#header").prepend(formattedName);
     for(i in formattedContacts) {
     	$("#topContacts").append(formattedContacts[i]);
     	$("#footerContacts").append(formattedContacts[i]);
@@ -102,3 +104,5 @@ var projects = {
   ],
   display: function(){}
 };
+
+bio.display();
