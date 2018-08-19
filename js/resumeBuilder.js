@@ -11,7 +11,21 @@ var bio = {
   welcomeMessage: "I'm working on it bruh",
   skills: ["This", "Will need", "To be", "Updated when I have some"],
   biopic: "images/me.png",
-  display: function(){};
+  display: function(){
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formattedContacts = [
+      HTMLmobile.replace("%data%", bio.contacts.mobile),
+      HTMLemail.replace("%data%", bio.contacts.email),
+      HTMLgithub.replace("%data%", bio.contacts.github),
+      HTMLtwitter.replace("%data%", bio.contacts.twitter),
+      HTMLlocation.replace("%data%", bio.contacts.location)
+    ]
+    for(i in formattedContacts) {
+    	$("#topContacts").append(formattedContacts[i]);
+    	$("#footerContacts").append(formattedContacts[i]);
+    };
+  }
 };
 
 var education = {
@@ -45,7 +59,7 @@ var education = {
       url: "udacity.com"
     }
   ],
-  display: function(){};
+  display: function(){}
 };
 
 var work = {
@@ -72,19 +86,19 @@ var work = {
       departments to fill in for sick leave, vacations, or other vacancies."
     }
   ],
-  display: function(){};
+  display: function(){}
 };
 
 var projects = {
   projects:[
     {
       title: "I'm glad I can put fake info here",
-      dates: "2017 - 2018"
+      dates: "2017 - 2018",
       description: "I don't really want to use this as a resume, probably, so I \
       don't want to take the time to actually set my projects in here. This is just \
-      placeholder information!"
+      placeholder information!",
       images: ["placeholderurl", "andanotherone.com"]
     }
   ],
-  display: function(){};
+  display: function(){}
 };
