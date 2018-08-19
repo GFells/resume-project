@@ -81,7 +81,6 @@ var education = {
         HTMLschoolMajor.replace("%data%", education.schools[i].majors)
       ];
     };
-    console.log(formattedSchools);
     $("#education").append(HTMLschoolStart);
     for (i in formattedSchools) {
       $(".education-entry").append(formattedSchools[i]);
@@ -152,12 +151,29 @@ var projects = {
       description: "I don't really want to use this as a resume, probably, so I \
       don't want to take the time to actually set my projects in here. This is just \
       placeholder information!",
-      images: ["placeholderurl", "andanotherone.com"]
+      images: ["images/project-holder1.jpg", "images/project-holder2.jpg"]
     }
   ],
-  display: function(){}
+  display: function(){
+    var formattedProjects = [];
+    for (i in projects.projects) {
+      formattedProjects = [
+        HTMLprojectTitle.replace("%data%", projects.projects[i].title),
+        HTMLprojectDates.replace("%data%", projects.projects[i].dates),
+        HTMLprojectDescription.replace("%data%", projects.projects[i].description)
+      ]
+      for (e in projects.projects[i].images) {
+        formattedProjects.push(HTMLprojectImage.replace("%data%", projects.projects[i].images[e]))
+      };
+    };
+    $("#projects").append(HTMLprojectStart);
+    for (i in formattedProjects) {
+      $(".project-entry").append(formattedProjects[i]);
+    };
+  }
 };
 
 bio.display();
 education.display();
 work.display();
+projects.display();
