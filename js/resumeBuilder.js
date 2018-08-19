@@ -126,7 +126,22 @@ var work = {
       departments to fill in for sick leave, vacations, or other vacancies."
     }
   ],
-  display: function(){}
+  display: function(){
+    var formattedJobs = [];
+    for (i in work.jobs) {
+      formattedJobs[i] = [
+        HTMLworkEmployer.replace("%data%", work.jobs[i].employer) + " " +
+        HTMLworkTitle.replace("%data%", work.jobs[i].title),
+        HTMLworkLocation.replace("%data%", work.jobs[i].location),
+        HTMLworkDates.replace("%data%", work.jobs[i].dates),
+        HTMLworkDescription.replace("%data%", work.jobs[i].description)
+      ];
+    };
+    $("#workExperience").append(HTMLworkStart);
+    for (i in formattedJobs) {
+      $(".work-entry").append(formattedJobs[i]);
+    }
+  }
 };
 
 var projects = {
@@ -145,3 +160,4 @@ var projects = {
 
 bio.display();
 education.display();
+work.display();
