@@ -6,14 +6,16 @@ var bio = {
        email: "gfells@live.com",
        github: "getPetrafied",
        twitter: "REDACTED",
-       location: "Denver, CO"
+       location: "Denver"
      },
-  welcomeMessage: "I'm working on it bruh",
+  welcomeMessage: "This is a super sweet bio message placeholder",
   skills: ["This", "Will need", "To be", "Updated when I have some"],
   biopic: "images/profpic.png",
   display: function(){
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
     var formattedContacts = [
       HTMLmobile.replace("%data%", bio.contacts.mobile),
       HTMLemail.replace("%data%", bio.contacts.email),
@@ -27,6 +29,12 @@ var bio = {
     	$("#topContacts").append(formattedContacts[i]);
     	$("#footerContacts").append(formattedContacts[i]);
     };
+    $("#header").append(formattedWelcomeMsg);
+    $("#header").append(formattedBioPic);
+    $("#header").append(HTMLskillsStart);
+    for (i in bio.skills) {
+      $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+    };
   }
 };
 
@@ -35,14 +43,14 @@ var education = {
     {
       name: "Arapahoe Community College",
       location: "Arapahoe, CO",
-      degree: "Associate of Arts: Psychology",
+      degree: "AA",
       majors: "Psychology",
       dates: "2010 - 2013",
     },
     {
       name: "University of Colorado Denver",
       location: "Denver, CO",
-      degree: "Bachelor of Arts: Nueropsychology",
+      degree: "BA",
       majors: "Nueropsychology",
       dates: "2013 - 2015",
     }
@@ -52,16 +60,46 @@ var education = {
       title: "Intro to Programming Nanodegree",
       school: "Udacity",
       dates: "2017",
-      url: "udacity.com"
+      url: "https://www.udacity.com/course/intro-to-programming-nanodegree--nd000"
     },
     {
       title: "Front-End Web Developmer Nanodegree",
       school: "Udacity",
       dates: "2018",
-      url: "udacity.com"
+      url: "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }
   ],
-  display: function(){}
+  display: function(){
+    var formattedSchools = [];
+    var formattedOnlineCourses = [];
+    for (i in education.schools) {
+      formattedSchools[i] = [
+        HTMLschoolName.replace("%data%", education.schools[i].name) + " " +
+        HTMLschoolDegree.replace("%data%", education.schools[i].degree),
+        HTMLschoolLocation.replace("%data%", education.schools[i].location),
+        HTMLschoolDates.replace("%data%", education.schools[i].dates),
+        HTMLschoolMajor.replace("%data%", education.schools[i].majors)
+      ];
+    };
+    console.log(formattedSchools);
+    $("#education").append(HTMLschoolStart);
+    for (i in formattedSchools) {
+      $(".education-entry").append(formattedSchools[i]);
+    }
+    $("#education").append(HTMLonlineClasses);
+    $("#education").append(HTMLschoolStart);
+    for (i in education.onlineCourses) {
+      formattedOnlineCourses[i] = [
+        HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title) + " " +
+        HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school),
+        HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates),
+        HTMLonlineURL.replace("%data%", education.onlineCourses[i].url)
+      ];
+    };
+    for (i in formattedOnlineCourses) {
+      $(".education-entry:last").append(formattedOnlineCourses[i]);
+    }
+  }
 };
 
 var work = {
@@ -106,3 +144,4 @@ var projects = {
 };
 
 bio.display();
+education.display();
