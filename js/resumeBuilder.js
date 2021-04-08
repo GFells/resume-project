@@ -63,7 +63,7 @@ var education = {
       url: "https://www.udacity.com/course/intro-to-programming-nanodegree--nd000"
     },
     {
-      title: "Front-End Web Developmer Nanodegree",
+      title: "Front-End Web Developer Nanodegree",
       school: "Udacity",
       dates: "2018",
       url: "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
